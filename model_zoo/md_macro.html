@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MetaDrive Macro Environment &mdash; DI-drive 0.3.4 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DREX in MetaDrive" href="drex.html" />
+    <link rel="prev" title="Latent Reinforcement Learning" href="latent_rl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> DI-drive
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/index.html">Features</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Model Zoo</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#imitation-learning-model-zoo">Imitation Learning Model Zoo</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#reinforcement-learning-model-zoo">Reinforcement Learning Model Zoo</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="simple_rl.html">BeV Speed End-to-end Reinforcement Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implicit.html">End-to-End Model-Free Reinforcement Learning for Urban Driving using Implicit Affordances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="latent_rl.html">Latent Reinforcement Learning</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MetaDrive Macro Environment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#environments">Environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#training-test">Training &amp; Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#other-method">Other Method</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/index.html">API Doc</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DI-drive</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Model Zoo</a> &raquo;</li>
+        
+      <li>MetaDrive Macro Environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/model_zoo/md_macro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="metadrive-macro-environment">
+<h1>MetaDrive Macro Environment<a class="headerlink" href="#metadrive-macro-environment" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>MetaDrive Macro Environment is a control option based RL environment on MetaDrive.
+It is similar with <a class="reference external" href="https://github.com/eleurent/highway-env">highway-env</a>, in which
+the ego vehicle aims to keep a high velocity on a multi-lane highway with some slower
+vehicles. The env use a top-down view as input and outputs a discrete macro action.
+The macro action takes effect in a following time period in simulator, and the vehicle
+is drived by a IDM policy that can achieve the target macro action.</p>
+<a class="reference internal image-reference" href="../_images/macro_demo1.gif"><img alt="macro_demo1" class="align-center" src="../_images/macro_demo1.gif" style="width: 500px;" /></a>
+<section id="environments">
+<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this heading">¶</a></h2>
+<p>The environment is established following the standard <code class="docutils literal notranslate"><span class="pre">gym.Env</span></code> form. Detail information
+is listed below.</p>
+<p>The state of macro env is Top-down Sematic Maps containing 5 channels:</p>
+<ul class="simple">
+<li><p>Road and navigation</p></li>
+<li><p>Ego now and previous position</p></li>
+<li><p>Neighbor at step <code class="docutils literal notranslate"><span class="pre">t</span></code></p></li>
+<li><p>Neighbor at <code class="docutils literal notranslate"><span class="pre">t-1</span></code></p></li>
+<li><p>Neighbor at <code class="docutils literal notranslate"><span class="pre">t-2</span></code></p></li>
+</ul>
+<p>All map elements are in the same relative coordinate system.</p>
+<p>Reward:</p>
+<ul class="simple">
+<li><p>driving reward: driving distance along the lane.</p></li>
+<li><p>speed reward: the faster, the larger</p></li>
+<li><p>termination reward: containing success and failure case</p></li>
+</ul>
+<p>Action:</p>
+<ul class="simple">
+<li><p>Speed up</p></li>
+<li><p>Slow down</p></li>
+<li><p>Change lane left</p></li>
+<li><p>Change lane right</p></li>
+<li><p>Hold speed</p></li>
+</ul>
+<p>Each action costs 30 system timestep, and is converted to control signals through a PID controller.</p>
+</section>
+<section id="training-test">
+<h2>Training &amp; Test<a class="headerlink" href="#training-test" title="Permalink to this heading">¶</a></h2>
+<p>All the entry can be found in <code class="docutils literal notranslate"><span class="pre">demo/metadrive</span></code></p>
+<p>DI-drive provide two RL policy training entries: DQN and Discrete PPO. Run the following
+scripts to start training DQN demos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">demo</span><span class="o">/</span><span class="n">metadrive</span>
+<span class="n">python</span> <span class="n">macro_env_dqn_train</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You may need to modify the collector and evaluator nums according to your resources.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadrive_macro_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">collector_env_num</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>After training, you can visualize the performance by running the following script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">macro_env_dqn_eval</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You may need to change the checkpoint path in config. Here we provide a pre-trained
+DQN weights as example.</p>
+<p><a class="reference external" href="http://opendilab.org/download/DI-drive/metadrive/iteration_40000.pth.tar">iteration_40000.pth.tar</a></p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="drex.html" class="btn btn-neutral float-right" title="DREX in MetaDrive" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="latent_rl.html" class="btn btn-neutral float-left" title="Latent Reinforcement Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, OpenDILab
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

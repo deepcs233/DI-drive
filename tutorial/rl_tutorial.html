@@ -1,47 +1,46 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Simple Reinforcement Learning &mdash; DI-drive 0.1 documentation</title>
-  
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
+  <title>Simple Reinforcement Learning &mdash; DI-drive 0.3.4 documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Features" href="../features/index.html" />
-    <link rel="prev" title="Simple Imitation Learning" href="il_tutorial.html" />
-    <link href="../_static/css/style.css" rel="stylesheet" type="text/css">
-
+    <link rel="prev" title="Simple Imitation Learning" href="il_tutorial.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +64,7 @@
             
             
               <div class="version">
-                0.1
+                0.3.4
               </div>
             
           
@@ -82,7 +81,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -101,8 +99,12 @@
 <li class="toctree-l2"><a class="reference internal" href="il_tutorial.html">Simple Imitation Learning</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Simple Reinforcement Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#di-drive-rl-training-using-di-engine">DI-drive RL training using DI-engine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#evaluate-the-trained-model">Evaluate the trained model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#carla-rl-tutorial">Carla RL Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rl-training-using-di-engine">RL training using DI-engine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluate-and-test-the-trained-model">Evaluate and test the trained model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metadrive-rl-tutorial">MetaDrive RL Tutorial</a></li>
 </ul>
 </li>
 </ul>
@@ -124,7 +126,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -159,13 +160,11 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Tutorial</a> &raquo;</li>
         
@@ -174,7 +173,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/tutorial/rl_tutorial.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -188,35 +187,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="simple-reinforcement-learning">
-<h1>Simple Reinforcement Learning<a class="headerlink" href="#simple-reinforcement-learning" title="Permalink to this headline">¶</a></h1>
+  <section id="simple-reinforcement-learning">
+<h1>Simple Reinforcement Learning<a class="headerlink" href="#simple-reinforcement-learning" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>Ubuntu 16.04 system +Intel(R) Core(TM) i7-8700 CPU &#64; 3.20GHz + 32G
+<p><strong>DI-drive</strong> + <strong>DI-engine</strong> make RL for Autonomous Driving very easy. Here we show how to
+use <strong>DI-drive</strong> to run a simple Reinforcement Learning driving policy with Carla and MetaDrive
+separately.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>Ubuntu 16.04 system + Intel(R) Core(TM) i7-8700 CPU &#64; 3.20GHz + 32G
 memory + GPU1060</p>
-</div>
-<div class="section" id="di-drive-rl-training-using-di-engine">
-<h2>DI-drive RL training using DI-engine<a class="headerlink" href="#di-drive-rl-training-using-di-engine" title="Permalink to this headline">¶</a></h2>
-<p>DI-drive + DI-engine make RL for Autonomous Driving very easy. We build a simple RL demo that can run
-varies RL algorithm with a simple environment setting. It takes a small Bird-eye View image as NN
-input, together with current speed, and directly output control signals. All the code can be found in
-<code class="docutils literal notranslate"><span class="pre">demo/simple_rl</span></code>.</p>
+</section>
+<section id="carla-rl-tutorial">
+<h2>Carla RL Tutorial<a class="headerlink" href="#carla-rl-tutorial" title="Permalink to this heading">¶</a></h2>
+<p>DI-drive support several RL policies and provide a simple RL env running with Carla server.
+The policy takes a small Bird-eye View image together with
+current speed as input, and directly outputs control signals.</p>
+<section id="rl-training-using-di-engine">
+<h3>RL training using DI-engine<a class="headerlink" href="#rl-training-using-di-engine" title="Permalink to this heading">¶</a></h3>
+<p>We build simple RL demos that can run varies RL algorithm with the aforementioned simple environment setting.
+All the code can be found in <code class="docutils literal notranslate"><span class="pre">demo/simple_rl</span></code>, including training, evaluating and testing.</p>
 <p>Here we show how to run the DQN demo. It follows the standard deployment of a DI-engine RL entry.
-Other RL demo is written in same way.</p>
+Other RL policies run in same way.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> demo/simple_rl
-python dqn_main.py
+python simple_rl_train.py -p dqn
 </pre></div>
 </div>
 <p>The config part defines the env and policy settings. Notes that you need to change the Carla server
-host and port, and modify the environment nums according to yours. By default it uses 8 Carla server on
+host and port, and modify the environment nums according to yours. By default it uses 8 Carla servers on
 <cite>localhost</cite> with port from 9000 to 9016.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">exp_name</span><span class="o">=...</span><span class="p">,</span>
     <span class="n">env</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="o">...</span>
     <span class="p">),</span>
-    <span class="n">env_num</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
     <span class="n">server</span><span class="o">=</span><span class="p">[</span>
         <span class="nb">dict</span><span class="p">(</span><span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9016</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
     <span class="p">],</span>
@@ -226,34 +231,65 @@ host and port, and modify the environment nums according to yours. By default it
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>For more details about how to tune parameters in DQN, you can see their doc. Usually
+<p>For more details about how to tune parameters in DQN, you can see <strong>DI-engine</strong>’s doc. Usually
 you may concern about the replay buffer size and sample num per collection.</p>
 <p>When you see the information in terminal that contains the content in
 the following picture, it means that you are beginning to train the
 model.</p>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/rl_tutorial_log.png"><img alt="rl_tutorial_log" src="../_images/rl_tutorial_log.png" style="width: 800px;" /></a>
-</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/rl_tutorial_log.png"><img alt="rl_tutorial_log" src="../_images/rl_tutorial_log.png" style="width: 1000px;" /></a>
+</figure>
 <p>In the process of training, you can use the tensorboard as a monitor,
 the default log path is in your working directory.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tensorboard --logdir<span class="o">=</span><span class="s1">&#39;./log&#39;</span>
 </pre></div>
 </div>
 <p>After running for about 24 hours, you will get:</p>
-<div class="figure align-center">
+<figure class="align-center">
 <a class="reference internal image-reference" href="../_images/rl_tutorial_tb.png"><img alt="rl_tutorial_tb" src="../_images/rl_tutorial_tb.png" style="width: 800px;" /></a>
-</div>
-</div>
-<div class="section" id="evaluate-the-trained-model">
-<h2>Evaluate the trained model<a class="headerlink" href="#evaluate-the-trained-model" title="Permalink to this headline">¶</a></h2>
-<p>After training, you can evaluate the trained model with a vsiualization screen. Simply run the following code.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> demo/simple_rl
-python dqn_eval.py
+</figure>
+</section>
+<section id="evaluate-and-test-the-trained-model">
+<h3>Evaluate and test the trained model<a class="headerlink" href="#evaluate-and-test-the-trained-model" title="Permalink to this heading">¶</a></h3>
+<p>After training, you can evaluate the trained model on a benchmark suite. Simply run the following code.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python simple_rl_eval.py -p dqn -c PATH_TO_YOUR_CKPT
 </pre></div>
 </div>
-<p>You may need to change Carla server, change the suite you want to evaluate, and switch on/off visualization or save a replay gif/video.
-You can add your pre-trained weights in policy’s config.</p>
+<p>You may need to change Carla server numbers and settints, change the suite you want to evaluate, and add
+your pre-trained weights in policy’s config.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eval_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">env_num</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">),</span>
+    <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9010</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="p">)],</span>
+    <span class="n">policy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">cuda</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">ckpt_path</span><span class="o">=</span><span class="s1">&#39;path/to/your/model&#39;</span><span class="p">,</span>
+        <span class="nb">eval</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">evaluator</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">suite</span><span class="o">=</span><span class="s1">&#39;FullTown02-v1&#39;</span><span class="p">,</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="o">...</span>
+    <span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The default DQN policy can have nice probability to complete navigation in <cite>FullTown02-v2</cite>, with traffic lights
+ignored.</p>
+<p>Also, you can test the policy in a town route with a visualized screen. Simply run the following code.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python simple_rl_test.py -p dqn -c PATH_TO_YOUR_CKPT
+</pre></div>
+</div>
+<p>You may need to change Carla server settints, switch on/off visualization or save a replay gif/video
+and add your pre-trained weights in policy’s config.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">env</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="o">...</span>
         <span class="n">visualize</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
@@ -270,44 +306,72 @@ You can add your pre-trained weights in policy’s config.</p>
     <span class="n">policy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
         <span class="n">cuda</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">ckpt_path</span><span class="o">=</span><span class="s1">&#39;path/to/your/model&#39;</span><span class="p">,</span>
+        <span class="nb">eval</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">evaluator</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="o">...</span>
+            <span class="p">),</span>
+        <span class="p">),</span>
+        <span class="o">...</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="metadrive-rl-tutorial">
+<h2>MetaDrive RL Tutorial<a class="headerlink" href="#metadrive-rl-tutorial" title="Permalink to this heading">¶</a></h2>
+<p>DI-drive provide a simple entry that can run MetaDrive default environments
+with DI-engine policies. The training entry can be found in <cite>demo/metadrive</cite></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> demo/metadrive
+python basic_env_train.py
+</pre></div>
+</div>
+<p>MetaDrive has standard <cite>gym</cite> environments. Adding an <code class="docutils literal notranslate"><span class="pre">EnvWrapper</span></code> together with
+other components and pipeline in DI-engine, RL experiments is able to run.</p>
+<p>Here, we use “MetaDrive-1000envs-v0” to train and “MetaDrive-validation-v0” to evaluate
+an on-policy PPO policy. You can modify the env num in config to suit your device.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadrive_basic_config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">env</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="o">...</span>
+        <span class="n">collector_env_num</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">evaluator_env_num</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="o">...</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>The default DQN policy can have nice probability to complete navigation in <cite>FullTown02-v2</cite>, with traffic lights
-ignored.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../features/index.html" class="btn btn-neutral float-right" title="Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="il_tutorial.html" class="btn btn-neutral float-left" title="Simple Imitation Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="../features/index.html" class="btn btn-neutral float-right" title="Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="il_tutorial.html" class="btn btn-neutral float-left" title="Simple Imitation Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, OpenDILab.
+        &copy; Copyright 2021, OpenDILab
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -315,6 +379,7 @@ ignored.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

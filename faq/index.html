@@ -1,46 +1,45 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>FAQ &mdash; DI-drive 0.1 documentation</title>
-  
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
+  <title>FAQ &mdash; DI-drive 0.3.4 documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="utils" href="../api_doc/utils.html" />
-    <link href="../_static/css/style.css" rel="stylesheet" type="text/css">
-
+    <link rel="prev" title="utils" href="../api_doc/utils.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +63,7 @@
             
             
               <div class="version">
-                0.1
+                0.3.4
               </div>
             
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -121,7 +119,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -156,20 +153,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
       <li>FAQ</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/faq/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -183,16 +178,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="faq">
-<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+  <section id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="carla-installation-problem">
-<h2>Carla installation problem<a class="headerlink" href="#carla-installation-problem" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="q1-no-easy-install">
-<h3>Q1: No <cite>easy_install</cite><a class="headerlink" href="#q1-no-easy-install" title="Permalink to this headline">¶</a></h3>
+<section id="carla-installation-problem">
+<h2>Carla installation problem<a class="headerlink" href="#carla-installation-problem" title="Permalink to this heading">¶</a></h2>
+<section id="q1-no-easy-install">
+<h3>Q1: No <cite>easy_install</cite><a class="headerlink" href="#q1-no-easy-install" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list">
-<dt class="field-odd">A1</dt>
+<dt class="field-odd">A1<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">easy_install</span></code> is used in old version of <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>, and may not be added in conda/pyenv by
 default. You may need to install by yourself.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="nv">setuptools</span><span class="o">==</span><span class="m">50</span>
@@ -200,22 +195,22 @@ default. You may need to install by yourself.</p>
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="q2-carla-egg-installation-error-or-can-not-import">
-<h3>Q2: <cite>carla.egg</cite> installation error or can not import<a class="headerlink" href="#q2-carla-egg-installation-error-or-can-not-import" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q2-carla-egg-installation-error-or-can-not-import">
+<h3>Q2: <cite>carla.egg</cite> installation error or can not import<a class="headerlink" href="#q2-carla-egg-installation-error-or-can-not-import" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">A2</dt>
+<dt class="field-odd">A2<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This is usually because the <code class="docutils literal notranslate"><span class="pre">easy_install</span></code> command you have run (linked to) is not the one
 installed in your environment.
 You can manually add it to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code> or simply find in
 the <code class="docutils literal notranslate"><span class="pre">./bin</span></code> folder in your environment path and directly use it.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="q3-error-with-libpng-libjpeg">
-<h3>Q3: Error with ‘libpng’, ‘libjpeg’<a class="headerlink" href="#q3-error-with-libpng-libjpeg" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q3-error-with-libpng-libjpeg">
+<h3>Q3: Error with ‘libpng’, ‘libjpeg’<a class="headerlink" href="#q3-error-with-libpng-libjpeg" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list">
-<dt class="field-odd">A3</dt>
+<dt class="field-odd">A3<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Carla python API needs library of <code class="docutils literal notranslate"><span class="pre">png</span></code> and <code class="docutils literal notranslate"><span class="pre">jpeg</span></code> that may not be installed in your environment.
 Install them manually if error shows.</p>
 <p>png:</p>
@@ -234,22 +229,22 @@ conda install <span class="nv">jpeg</span><span class="o">=</span>8d -c conda-fo
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="q4-error-with-alsa-lib-confxxx">
-<h3>Q4: Error with ‘ALSA lib confxxx’<a class="headerlink" href="#q4-error-with-alsa-lib-confxxx" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q4-error-with-alsa-lib-confxxx">
+<h3>Q4: Error with ‘ALSA lib confxxx’<a class="headerlink" href="#q4-error-with-alsa-lib-confxxx" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list simple">
-<dt class="field-odd">A4</dt>
+<dt class="field-odd">A4<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This error shows because Carla needs a sound card to run simulation.
 If this makes no sense to anything, just ignore it. Or you can fix it by adding
 <code class="docutils literal notranslate"><span class="pre">pcm.!default</span> <span class="pre">{</span> <span class="pre">type</span> <span class="pre">plug</span> <span class="pre">slave.pcm</span> <span class="pre">&quot;null&quot;</span> <span class="pre">}</span></code>
 into a new line of <code class="docutils literal notranslate"><span class="pre">/etc/asound.conf</span></code> file in your system.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="q5-error-import-shapely">
-<h3>Q5: Error import <cite>shapely</cite><a class="headerlink" href="#q5-error-import-shapely" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="q5-error-import-shapely">
+<h3>Q5: Error import <cite>shapely</cite><a class="headerlink" href="#q5-error-import-shapely" title="Permalink to this heading">¶</a></h3>
 <dl class="field-list">
-<dt class="field-odd">A5</dt>
+<dt class="field-odd">A5<span class="colon">:</span></dt>
 <dd class="field-odd"><p>This often happens with showing the following error log.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">OSError</span><span class="p">:</span> <span class="p">[</span><span class="n">WinError</span> <span class="mi">126</span><span class="p">]</span> <span class="n">The</span> <span class="n">specified</span> <span class="n">module</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">found</span>
 
@@ -268,37 +263,36 @@ into a new line of <code class="docutils literal notranslate"><span class="pre">
 </dl>
 </dd>
 </dl>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../api_doc/utils.html" class="btn btn-neutral float-left" title="utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+      
+        <a href="../api_doc/utils.html" class="btn btn-neutral float-left" title="utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, OpenDILab.
+        &copy; Copyright 2021, OpenDILab
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -306,6 +300,7 @@ into a new line of <code class="docutils literal notranslate"><span class="pre">
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,46 +1,45 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>DI-drive Documentation &mdash; DI-drive 0.1 documentation</title>
-  
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
+  <title>DI-drive Documentation &mdash; DI-drive 0.3.4 documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="installation/index.html" />
-    <link href="_static/css/style.css" rel="stylesheet" type="text/css">
-
+    <link rel="next" title="Installation" href="installation/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -64,7 +63,7 @@
             
             
               <div class="version">
-                0.1
+                0.3.4
               </div>
             
           
@@ -81,7 +80,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -111,7 +109,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -146,20 +143,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="#">Docs</a> &raquo;</li>
         
       <li>DI-drive Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -173,24 +168,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="di-drive-documentation">
-<h1>DI-drive Documentation<a class="headerlink" href="#di-drive-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="di-drive-documentation">
+<h1>DI-drive Documentation<a class="headerlink" href="#di-drive-documentation" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="figure align-default">
-<a class="reference internal image-reference" href="_images/DI-drive.png"><img alt="DI-drive" src="_images/DI-drive.png" style="width: 300px;" /></a>
-</div>
+<figure class="align-default">
+<img alt="DI-drive" src="_images/di-drive_banner.png" />
+</figure>
 <p>Decision Intelligence Platform for Autonomous Driving simulation.</p>
-<p>Last updated on 2021.07.23</p>
+<p>Last updated on 2022.6.5</p>
 <hr class="docutils" />
 <p><strong>DI-drive</strong> is an open-sourece application platform under <strong>OpenDILab</strong>.
 <strong>DI-drive</strong> applies Deep Learning method to decision, planning and controlling task in Autonomous Driving simulation,
 with <strong>high ease of use</strong> and <strong>low difficulty to hands-on</strong>.
 <strong>DI-drive</strong> designes <strong>Casezoo</strong> to make simulation environment closer to real driving.
-<strong>DI-drive</strong> develops Decision Intelligence driving policy with <a class="reference external" href="http://pytorch.org">Pytorch</a> and <a class="reference external" href="http://open-xlab.pages.gitlab.bj.sensetime.com/cell/nerveX/">DI-engine</a>
-and mainly uses <a class="reference external" href="http://carla.org">Carla</a> simulator.</p>
-<div class="section" id="main-features-for-di-drive">
-<h2>Main features for <strong>DI-drive</strong><a class="headerlink" href="#main-features-for-di-drive" title="Permalink to this headline">¶</a></h2>
+<strong>DI-drive</strong> develops Deep Learning driving policy with <a class="reference external" href="http://pytorch.org">Pytorch</a> and <a class="reference external" href="https://github.com/opendilab/DI-engine">DI-engine</a>
+and supports <a class="reference external" href="http://carla.org">Carla</a> and <a class="reference external" href="https://decisionforce.github.io/metadrive">MetaDrive</a> simulator.</p>
+<section id="main-features-for-di-drive">
+<h2>Main features for <strong>DI-drive</strong><a class="headerlink" href="#main-features-for-di-drive" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
 <dt><strong>AD Simulation</strong></dt><dd><p><strong>DI-drive</strong> provides unified and easily used interfaces to support all kinds of lightweight and complex driving simulators.
@@ -225,17 +220,15 @@ It can adapt to all existing academic literatures and support complex training t
 <p>This is home page contains description of tutorials, features and API documentation for <strong>DI-drive</strong>. Feel free
 to check any part you need. It is recommended to first install <strong>DI-drive</strong> and have a quick try following
 provided quick start guidence.</p>
-</div>
-<div class="section" id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="installation/index.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#get-and-install-di-engine">Get and install DI-engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation/index.html#get-and-install-di-drive">Get and install DI-drive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#download-and-install-carla-python-api">Download and install Carla Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation/index.html#run-carla-server">Run Carla server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/index.html#additional-installation-for-carla">Additional Installation for Carla</a></li>
 </ul>
 </li>
 </ul>
@@ -247,6 +240,7 @@ provided quick start guidence.</p>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/carla_tutorial.html">Carla tutorial</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial/carla_tutorial.html#basic-concept-of-carla">Basic Concept of Carla</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial/carla_tutorial.html#quickly-create-carla-server-via-docker">Quickly Create Carla server via Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/carla_tutorial.html#carla-server-settings">Carla server settings</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/auto_run.html">Auto policy running and visualization</a><ul>
@@ -263,8 +257,8 @@ provided quick start guidence.</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/rl_tutorial.html">Simple Reinforcement Learning</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial/rl_tutorial.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/rl_tutorial.html#di-drive-rl-training-using-di-engine">DI-drive RL training using DI-engine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial/rl_tutorial.html#evaluate-the-trained-model">Evaluate the trained model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/rl_tutorial.html#carla-rl-tutorial">Carla RL Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/rl_tutorial.html#metadrive-rl-tutorial">MetaDrive RL Tutorial</a></li>
 </ul>
 </li>
 </ul>
@@ -274,12 +268,12 @@ provided quick start guidence.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features/index.html">Features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="features/simulator_feature.html">Simulator Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/simulator_feature.html">Carla Simulator Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/policy_feature.html">Policy Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/visualize.html">Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/datasets.html">Datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/carla_benchmark.html">Benchmark Evaluation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/casezoo.html">Casezoo Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/carla_benchmark.html">Carla Benchmark Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features/casezoo.html">Carla Scenario and Casezoo Evaluation</a></li>
 </ul>
 </li>
 </ul>
@@ -304,36 +298,35 @@ provided quick start guidence.</p>
 <li class="toctree-l1"><a class="reference internal" href="faq/index.html">FAQ</a></li>
 </ul>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="installation/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+      
+        <a href="installation/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, OpenDILab.
+        &copy; Copyright 2021, OpenDILab
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -341,6 +334,7 @@ provided quick start guidence.</p>
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

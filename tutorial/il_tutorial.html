@@ -1,47 +1,46 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Simple Imitation Learning &mdash; DI-drive 0.1 documentation</title>
-  
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-
-  
+  <title>Simple Imitation Learning &mdash; DI-drive 0.3.4 documentation</title>
   
 
   
   
-
+  
   
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Simple Reinforcement Learning" href="rl_tutorial.html" />
-    <link rel="prev" title="Auto policy running and visualization" href="auto_run.html" />
-    <link href="../_static/css/style.css" rel="stylesheet" type="text/css">
-
+    <link rel="prev" title="Auto policy running and visualization" href="auto_run.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +64,7 @@
             
             
               <div class="version">
-                0.1
+                0.3.4
               </div>
             
           
@@ -82,7 +81,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -124,7 +122,6 @@
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -159,13 +156,11 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../index.html">Docs</a> &raquo;</li>
         
           <li><a href="index.html">Tutorial</a> &raquo;</li>
         
@@ -174,7 +169,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/tutorial/il_tutorial.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -188,121 +183,155 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="simple-imitation-learning">
-<span id="header-n2"></span><h1>Simple Imitation Learning<a class="headerlink" href="#simple-imitation-learning" title="Permalink to this headline">¶</a></h1>
+  <section id="simple-imitation-learning">
+<span id="header-n2"></span><h1>Simple Imitation Learning<a class="headerlink" href="#simple-imitation-learning" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>Here we will show you how to use <strong>DI-drive</strong> for imitation learning research
 of autopilot. <strong>DI-drive</strong> supports
 <a class="reference external" href="http://vladlen.info/papers/conditional-imitation.pdf">Conditional Imitation Learning(CIL)</a>
-for Imitation Learning research.</p>
-<p>In this tutorial, we will show how to use <strong>DI-drive</strong> to train a CIL model.
-CIL takes front RGB camera and vehicle speed as input, then output the prediction of vehicle control singals including
-steer, throttle and brake under certain navigation command.</p>
-<p>IL of autopilot normally includes three parts:</p>
+and its inheritor for Imitation Learning research.</p>
+<p>In this tutorial, we will show how to use <strong>DI-drive</strong> to train a CILRS model.
+CILRS takes front RGB camera and vehicle speed as input, then output the prediction of vehicle control singals including
+steer, throttle and brake under certain navigation command, together with a speed prediction.</p>
+<p>Imitation Learning normally includes three parts:</p>
 <ul class="simple">
-<li><p>Datasets collection</p></li>
-<li><p>Model training</p></li>
-<li><p>Model evaluation</p></li>
+<li><p>Collecting expert driving datasets</p></li>
+<li><p>Training driving model</p></li>
+<li><p>Close-loop evaluation under driving curcumstance</p></li>
 </ul>
-<p>For now, we will show you step by step</p>
-<div class="section" id="datasets-collection">
-<span id="header-n14"></span><h2>Datasets collection<a class="headerlink" href="#datasets-collection" title="Permalink to this headline">¶</a></h2>
-<p>To collect the datasets, the first step is to start a Carla server</p>
+<p>For now, we will show you step by step. All demo codes can be found in <code class="docutils literal notranslate"><span class="pre">demo/cilrs</span></code></p>
+<section id="datasets-collection">
+<span id="header-n14"></span><h2>Datasets collection<a class="headerlink" href="#datasets-collection" title="Permalink to this heading">¶</a></h2>
+<p>To collect expert data, the first step is to start Carla servers</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>./CarlaUE4.sh -fps<span class="o">=</span><span class="m">10</span> -benchmark -world-port<span class="o">=[</span>PORT NUM<span class="o">]</span>
 </pre></div>
 </div>
-<p>To customize your training datasets, please refer to the configuration
-<code class="docutils literal notranslate"><span class="pre">coil_data_collect.py</span></code>. For this tutorial, you
-should change the <code class="docutils literal notranslate"><span class="pre">save_dir</span></code> path and Carla server hostport.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">saver</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">save_dir</span><span class="o">=</span><span class="s1">&#39;&lt;path_to_your_dataset&gt;/cils_datasets_train&#39;</span><span class="p">),</span>
-<span class="n">server</span><span class="o">=</span><span class="p">[</span>
-        <span class="nb">dict</span><span class="p">(</span><span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9008</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
-    <span class="p">],</span>
+<p>To customize your training datasets, please refer to the configuration and entry demo in
+<code class="docutils literal notranslate"><span class="pre">cilrs_data_collect.py</span></code>. It use an auto-driving policy to run in Carla benchmark ‘suite’.
+For this tutorial, you need to change the suite name, dataset path and Carla server host/port.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">=</span><span class="p">[</span>
+    <span class="nb">dict</span><span class="p">(</span><span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9010</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span>
+<span class="p">],</span>
+<span class="n">policy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">collect</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">n_episode</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">dir_path</span><span class="o">=</span><span class="s1">&#39;path_to_your_dataset&#39;</span><span class="p">,</span>
+        <span class="n">collector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+            <span class="n">suite</span><span class="o">=</span><span class="s1">&#39;suite_name&#39;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 <p>Then you can use the python scrips to collect the data.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> demo/coil_demo
-python coil_data_collect.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python cilrs_data_collect.py
 </pre></div>
 </div>
-<p>This collecting process usually cost ~7 hours and ~12 G storage with
-single Carla thread. You can speed up this process by starting multi-carla envs.</p>
-<p>If you finished this step, there should be a <code class="docutils literal notranslate"><span class="pre">.npy</span></code> file under
-<code class="docutils literal notranslate"><span class="pre">_preloads</span></code>.</p>
-<p>Once you finish the data collection, the next step is to train an CIL model.</p>
-</div>
-<div class="section" id="model-training">
-<span id="header-n26"></span><h2>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
+<p>This collecting process of 100 episodes may cost ~7 hours and ~12 G storage with
+single Carla server. You can speed up this process by starting multi-carla servers.</p>
+<p>The dataset format is illustrated in the <a class="reference external" href="../features/datasets.html">benchmark datasets</a>.
+The CILRS demo builds preload files to speed up the loading of dataset. If you finished
+this step, there should be an <code class="docutils literal notranslate"><span class="pre">.npy</span></code> file under <code class="docutils literal notranslate"><span class="pre">_preloads</span></code>.</p>
+<p>We recommend to collect both training and validating datasets with different suite to get
+better performance.</p>
+<p>Once you finish the data collection, the next step is to train an CILRS model.</p>
+</section>
+<section id="model-training">
+<span id="header-n26"></span><h2>Model training<a class="headerlink" href="#model-training" title="Permalink to this heading">¶</a></h2>
 <p>The training part of IL enables a model to mimic the
 output of an expert policy with the same input. To apply the model training
 with <strong>DI-drive</strong> with default training configuration, just run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">coil_train</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">cilrs_train</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>Note that you should modify the dataset path as you have created
+<p>Note that you should modify the dataset path and preload path as you have created
 above.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMON</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="s1">&#39;coil_icra&#39;</span><span class="p">,</span>
-             <span class="n">dataset_path</span><span class="o">=</span><span class="s1">&#39;&lt;path_to_your_dataset&gt;/datasets_train&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">train</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="s1">&#39;path_to_your_train_dataset&#39;</span><span class="p">,</span>
+        <span class="n">preloads</span><span class="o">=</span><span class="s1">&#39;path_to_your_train_preloads&#39;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="n">val</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">root_dir</span><span class="o">=</span><span class="s1">&#39;path_to_your_val_dataset&#39;</span><span class="p">,</span>
+        <span class="n">preloads</span><span class="o">=</span><span class="s1">&#39;path_to_your_val_preloads&#39;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">),</span>
 </pre></div>
 </div>
-<p>You will see loss printed on the screen like</p>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/image-il_1.png"><img alt="image-il_1" src="../_images/image-il_1.png" style="width: 300px;" /></a>
-</div>
-<p>and the training checkpoints will be saved under <code class="docutils literal notranslate"><span class="pre">_logs</span></code> folder. The
+<p>You will see training procedure shown on the screen like this.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/image-il_1.png"><img alt="image-il_1" src="../_images/image-il_1.png" style="width: 600px;" /></a>
+</figure>
+<p>The training checkpoints will be saved under <code class="docutils literal notranslate"><span class="pre">checkpoints</span></code> folder. The
 training process will last for 7~8 hours (i7-9900k and GeForce RTX 2080Ti), up to your machine hardware.</p>
 <p>if you want to customize your training configuration such as the model architecture and
-learning rates, please modify the config in <code class="docutils literal notranslate"><span class="pre">coil_train.py</span></code></p>
-</div>
-<div class="section" id="model-evaluation">
-<span id="header-n35"></span><h2>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">¶</a></h2>
-<p>To evaluate your trained model with <strong>DI-drive</strong>, just run</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">coil_eval</span><span class="o">.</span><span class="n">py</span>
+learning rates, please modify the config in <code class="docutils literal notranslate"><span class="pre">cilrs_train.py</span></code></p>
+</section>
+<section id="model-evaluation">
+<span id="header-n35"></span><h2>Model evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">¶</a></h2>
+<p>We provide benchmark evaluation and close-loop test in environment (mostly for visualization) for
+a trained CILRS model with <strong>DI-drive</strong>. To evaluate your trained model, just run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python cilrs_eval.py
 </pre></div>
 </div>
-<p>Note that you have change the checkpoint path and Carla server host/port in <code class="docutils literal notranslate"><span class="pre">coil_eval.py</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ckpt_path</span><span class="o">=</span><span class="s1">&#39;&lt;path_to_your_checkpoint&gt;&#39;</span>
-<span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9002</span><span class="p">,</span> <span class="mi">2</span><span class="p">])],</span>
+<p>Note that you may need to change the checkpoint path and Carla server host/port in <code class="docutils literal notranslate"><span class="pre">cilrs_eval.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">=</span><span class="p">[</span>
+   <span class="nb">dict</span><span class="p">(</span><span class="n">carla_host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">carla_ports</span><span class="o">=</span><span class="p">[</span><span class="mi">9000</span><span class="p">,</span> <span class="mi">9010</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="p">],</span>
+<span class="n">policy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+    <span class="n">ckpt_path</span><span class="o">=</span><span class="s1">&#39;path_to_your_ckpt&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
 </pre></div>
-</div>
-<p>You can visual the real-time evaluation process like</p>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/image-il_2.png"><img alt="image-il_2" src="../_images/image-il_2.png" style="width: 500px;" /></a>
 </div>
 <p>When the evaluation is finished, you will get a performance table.</p>
-<p>You can customize the evaluation configuration by modifying the config in
-<code class="docutils literal notranslate"><span class="pre">coil_eval.py</span></code></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/image-il_2.png"><img alt="image-il_2" src="../_images/image-il_2.png" style="width: 800px;" /></a>
+</figure>
+<p>Also, you can visual the real-time close-loop test by running</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">cilrs_test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You can see a visualized screen of the running policy.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/image-il_3.png"><img alt="image-il_3" src="../_images/image-il_3.png" style="width: 500px;" /></a>
+</figure>
+<p>You can customize the evaluation and test configuration by modifying the config in
+<code class="docutils literal notranslate"><span class="pre">cilrs_eval.py</span></code> and <code class="docutils literal notranslate"><span class="pre">cilrs_test.py</span></code></p>
 <p>Congratulations! You have finished the imitation learning tutorial.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="rl_tutorial.html" class="btn btn-neutral float-right" title="Simple Reinforcement Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="auto_run.html" class="btn btn-neutral float-left" title="Auto policy running and visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="rl_tutorial.html" class="btn btn-neutral float-right" title="Simple Reinforcement Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="auto_run.html" class="btn btn-neutral float-left" title="Auto policy running and visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, OpenDILab.
+        &copy; Copyright 2021, OpenDILab
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -310,6 +339,7 @@ learning rates, please modify the config in <code class="docutils literal notran
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
